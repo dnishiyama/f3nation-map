@@ -87,7 +87,7 @@ $(window).on('load', function() {
    * Sort days of week into proper order.
    */
     function daysOfWeekSorter(x,y) {
-      var daysOfWeek = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+      var daysOfWeek = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday","Expansion"];
       return daysOfWeek.indexOf(x)-daysOfWeek.indexOf(y);
     }
 
@@ -110,10 +110,9 @@ $(window).on('load', function() {
           ? points[i]['Marker Icon']
           : points[i]['Marker Color'];
 
-        groups.sort(daysOfWeekSorter);
-        groups.push(group);
       }
     }
+    groups.sort(daysOfWeekSorter);
 
     // if none of the points have named layers, return no layers
     if (groups.length === 0) {
@@ -204,7 +203,7 @@ $(window).on('load', function() {
 
         for (i in layers) {
           multilayerClusterSupport.checkIn(layers[i]);
-          layers[i].addTo(map);
+          if (i !== 'Expansion') layers[i].addTo(map);
         }
       }
 
